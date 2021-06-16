@@ -133,17 +133,17 @@ let vowelBonusScore;
 
 const scoringAlgorithms = 
 [{
-  name: "Simple Score",
+  name : "Simple Score",
   description : "Each letter is worth 1 point",
-  scorerFunction: function(word){ return simpleScorer(word)}
+  scorerFunction : function(word){ return simpleScorer(word)}
  },
  {
   name : "Bonus Vowels",
   description : "Vowels are 3 pts, consonants are 1 pt",
-  scorerFunction: function(word){ return vowelBonusScorer(word)}
+  scorerFunction : function(word){ return vowelBonusScorer(word)}
  },
  {
-  name : "Scrabble",
+  name: "Scrabble",
   description : "The traditional scoring algorithm",
  // scorerFunction: function(word){ return oldScrabbleScorer(word)}
   scorerFunction: function(word){ return scrabbleScore(word)}
