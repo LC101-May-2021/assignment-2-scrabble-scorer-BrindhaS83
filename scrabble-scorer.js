@@ -137,18 +137,21 @@ const scoringAlgorithms =
 [{
   name: "Simple Score",
   description: "Each letter is worth 1 point",
-  scorerFunction: function(word){ return simpleScore(word)}
+  scoreFunction: 
+  function(word){ return simpleScore(word)}
  },
  {
   name: "Bonus Vowels",
   description: "Vowels are 3 pts, consonants are 1 pt",
-  scorerFunction: function(word){ return vowelBonusScore(word)}
+  scoreFunction: 
+  function(word){ return vowelBonusScore(word)}
  },
  {
   name: "Scrabble",
   description: "The traditional scoring algorithm",
  // scorerFunction: function(word){ return oldScrabbleScorer(word)}
-  scorerFunction: function(word){ return scrabbleScore(word)}
+  scoreFunction: 
+  function(word){ return scrabbleScore(word)}
   
  }];
 
@@ -190,7 +193,7 @@ function runProgram() {
   }
   //console.log(newWord);
   //console.log(score);
-  console.log(`Score for ${newWord} : ${scoringAlgorithms[score].scorerFunction(newWord)}`);
+  console.log(`Score for ${newWord} : ${scoringAlgorithms[score].scoreFunction(newWord)}`);
    
 }
 
