@@ -28,8 +28,8 @@ function transform(obj) {
     
     for( let i = 0; i < obj[m].length; i++ ){
       //console.log("New array", obj[m][i]);
-     newPointStructure[(obj[m][i]).toLowerCase()] = m;
-
+     //newPointStructure[(obj[m][i]).toLowerCase()] = m;
+     newPointStructure[(obj[m][i]).toLowerCase()] = Number(m);
     }
     newPointStructure[' '] = 0;
   }
@@ -45,7 +45,8 @@ newPointStructure = transform(oldPointStructure);
 function scrabbleScore(word){
   let letterPoints = 0;
   for( let i = 0; i < word.length; i++ ){
-    letterPoints += Number(newPointStructure[word[i]]);
+    //letterPoints += Number(newPointStructure[word[i]]);
+    letterPoints += newPointStructure[word[i]];
   }
   return letterPoints;
 }
@@ -137,27 +138,17 @@ const scoringAlgorithms =
   name: "Simple Score",
   description: "Each letter is worth 1 point",
   scorerFunction: function(word){ return simpleScore(word)}
-  /*scorerFunction: function(word){
-    let letterPoints=0;
-    for( let i = 0; i < word.length; i++){
-      letterPoints = letterPoints + 1;
-     //letterpoints = word.length;
-      //console.log(letterpoints);
-    }
-    return letterPoints;
-    return word.length;
-  }*/
  },
  {
   name: "Bonus Vowels",
   description: "Vowels are 3 pts, consonants are 1 pt",
-  scorerFunction:function(word){ return vowelBonusScore(word)}
+  scorerFunction: function(word){ return vowelBonusScore(word)}
  },
  {
-  name:"Scrabble",
-  description:"The traditional scoring algorithm",
+  name: "Scrabble",
+  description: "The traditional scoring algorithm",
  // scorerFunction: function(word){ return oldScrabbleScorer(word)}
-  scorerFunction:function(word){ return scrabbleScore(word)}
+  scorerFunction: function(word){ return scrabbleScore(word)}
   
  }];
 
