@@ -31,13 +31,14 @@ function transform(obj) {
      //newPointStructure[(obj[m][i]).toLowerCase()] = m;
      newPointStructure[(obj[m][i]).toLowerCase()] = Number(m);
     }
-    newPointStructure[' '] = 0;
+   //newPointStructure[' '] = 0;
   }
   //console.log("newPointStructure",newPointStructure);
   return newPointStructure;  
   
 };
 newPointStructure = transform(oldPointStructure);
+newPointStructure[' '] = 0;
 //console.log('newPointStructure', newPointStructure);
 //console.log('oldPointStructure', oldPointStructure);
 //console.log(transform(oldPointStructure));
@@ -137,20 +138,20 @@ const scoringAlgorithms =
 [{
   name: "Simple Score",
   description: "Each letter is worth 1 point",
-  scoreFunction: 
+  scoringFunction: 
   function(word){ return simpleScore(word)}
  },
  {
   name: "Bonus Vowels",
   description: "Vowels are 3 pts, consonants are 1 pt",
-  scoreFunction: 
+  scoringFunction: 
   function(word){ return vowelBonusScore(word)}
  },
  {
   name: "Scrabble",
   description: "The traditional scoring algorithm",
  // scorerFunction: function(word){ return oldScrabbleScorer(word)}
-  scoreFunction: 
+  scoringFunction: 
   function(word){ return scrabbleScore(word)}
   
  }];
@@ -193,7 +194,7 @@ function runProgram() {
   }
   //console.log(newWord);
   //console.log(score);
-  console.log(`Score for ${newWord} : ${scoringAlgorithms[score].scoreFunction(newWord)}`);
+  console.log(`Score for ${newWord} : ${scoringAlgorithms[score].scoringFunction(newWord)}`);
    
 }
 
