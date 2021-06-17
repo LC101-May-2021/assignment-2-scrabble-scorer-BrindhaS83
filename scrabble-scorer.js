@@ -43,7 +43,7 @@ newPointStructure[' '] = 0;
 //console.log('oldPointStructure', oldPointStructure);
 //console.log(transform(oldPointStructure));
 
-function scrabbleScore(word){
+let scrabbleScore = function(word){
   let letterPoints = 0;
   for( let i = 0; i < word.length; i++ ){
     //letterPoints += Number(newPointStructure[word[i]]);
@@ -72,7 +72,7 @@ function oldScrabbleScorer(word) {
 	return letterPoints;
  }
 
- function simpleScore(word){
+  let simpleScore = function (word){
    //word = word.toUpperCase();
    let pointValue=1;
    let letterPoints=0;
@@ -84,7 +84,7 @@ function oldScrabbleScorer(word) {
     return letterPoints;
  }
 
- function vowelBonusScore(word){
+  let vowelBonusScore = function (word){
    word = word.toUpperCase();
    let pointValue=0;
    let letterPoints=0;
@@ -133,28 +133,31 @@ function initialPrompt() {
 //let vowelBonusScore;
 
 //let scrabbleScore;
-
-const scoringAlgorithms = 
-[{
+let object1 =
+{
   name: "Simple Score",
   description: "Each letter is worth 1 point",
   scoringFunction: 
-  function(word){ return simpleScore(word)}
- },
+  simpleScore
+ }
+ let object2 =
  {
   name: "Bonus Vowels",
   description: "Vowels are 3 pts, consonants are 1 pt",
   scoringFunction: 
-  function(word){ return vowelBonusScore(word)}
- },
+  vowelBonusScore
+ }
+ let object3 =
  {
   name: "Scrabble",
   description: "The traditional scoring algorithm",
  // scorerFunction: function(word){ return oldScrabbleScorer(word)}
   scoringFunction: 
-  function(word){ return scrabbleScore(word)}
+  scrabbleScore
   
- }];
+ }
+const scoringAlgorithms = 
+[ object1, object2, object3 ];
 
 /*console.log("algorithm name: ", scoringAlgorithms[0].name);
 console.log("scorerFunction result:", scoringAlgorithms[0].scorerFunction("JavaScript"));*/
