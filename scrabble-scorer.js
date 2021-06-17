@@ -22,19 +22,21 @@ let newPointStructure = {};
 //console.log("letter k: ", newPointStructure['k']);
  
 function transform(obj) {
-
+  let newObj = {};
+ 
   for (let m in obj ){
     //console.log("obj[m]", obj[m]);
     
     for( let i = 0; i < obj[m].length; i++ ){
       //console.log("New array", obj[m][i]);
      //newPointStructure[(obj[m][i]).toLowerCase()] = m;
-     newPointStructure[(obj[m][i]).toLowerCase()] = Number(m);
+     newObj[(obj[m][i]).toLowerCase()] = Number(m);
     }
-   //newPointStructure[' '] = 0;
   }
+ 
   //console.log("newPointStructure",newPointStructure);
-  return newPointStructure;  
+  //console.log("object:" + obj);
+  return newObj;  
   
 };
 newPointStructure = transform(oldPointStructure);
