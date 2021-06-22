@@ -30,7 +30,7 @@ function transform(obj) {
     for( let i = 0; i < obj[m].length; i++ ){
       //console.log("New array", obj[m][i]);
      //newPointStructure[(obj[m][i]).toLowerCase()] = m;
-     newObj[(obj[m][i]).toLowerCase()] = Number(m);
+     newObj[(obj[m][i]).toUpperCase()] = Number(m);
     }
   }
  
@@ -46,6 +46,7 @@ newPointStructure[' '] = 0;
 //console.log(transform(oldPointStructure));
 
 let scrabbleScore = function(word){
+  word = word.toUpperCase();
   let letterPoints = 0;
   for( let i = 0; i < word.length; i++ ){
     //letterPoints += Number(newPointStructure[word[i]]);
@@ -76,8 +77,8 @@ function oldScrabbleScorer(word) {
 
   let simpleScore = function (word){
    //word = word.toUpperCase();
-   let pointValue=1;
-   let letterPoints=0;
+   let pointValue = 1;
+   let letterPoints = 0;
    
    for( let i = 0; i < word.length; i++){
      //letterPoints += `Points for '${word[i]}': ${pointValue}\n`
@@ -88,12 +89,12 @@ function oldScrabbleScorer(word) {
 
   let vowelBonusScore = function (word){
    word = word.toUpperCase();
-   let pointValue=0;
-   let letterPoints=0;
+   let pointValue = 0;
+   let letterPoints = 0;
    let vowel =['A', 'E', 'I', 'O', 'U'];
    
    for( let i = 0; i < word.length; i++){
-      if(vowel.includes(word[i])){
+      if( vowel.includes(word[i])){
         pointValue = 3;
       } else {
         pointValue = 1;
@@ -126,8 +127,6 @@ function initialPrompt() {
   console.log(simpleScorer(simpleScore));
   let vowelBonusScore = input.question("Enter a word to score");
   console.log(vowelBonusScorer(vowelBonusScore));*/
-  
-  
 };
 
 //let simpleScore;
@@ -158,8 +157,7 @@ let object1 =
   scrabbleScore
   
  }
-const scoringAlgorithms = 
-[ object1, object2, object3 ];
+const scoringAlgorithms = [ object1, object2, object3 ];
 
 /*console.log("algorithm name: ", scoringAlgorithms[0].name);
 console.log("scorerFunction result:", scoringAlgorithms[0].scorerFunction("JavaScript"));*/
@@ -180,11 +178,7 @@ function scorerPrompt() {
   return scoringAlgorithm;
 
 } 
-
-
-
 //function transform() {};
-
 //let newPointStructure;
 
 function runProgram() {
