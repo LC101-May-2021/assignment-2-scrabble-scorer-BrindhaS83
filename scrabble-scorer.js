@@ -30,7 +30,7 @@ function transform(obj) {
     for( let i = 0; i < obj[m].length; i++ ){
       //console.log("New array", obj[m][i]);
      //newPointStructure[(obj[m][i]).toLowerCase()] = m;
-     newObj[(obj[m][i]).toUpperCase()] = Number(m);
+     newObj[(obj[m][i]).toLowerCase()] = Number(m);
     }
   }
  
@@ -41,12 +41,13 @@ function transform(obj) {
 };
 newPointStructure = transform(oldPointStructure);
 newPointStructure[' '] = 0;
+
 //console.log('newPointStructure', newPointStructure);
 //console.log('oldPointStructure', oldPointStructure);
 //console.log(transform(oldPointStructure));
 
 let scrabbleScore = function(word){
-  word = word.toUpperCase();
+  word = word.toLowerCase();
   let letterPoints = 0;
   for( let i = 0; i < word.length; i++ ){
     //letterPoints += Number(newPointStructure[word[i]]);
